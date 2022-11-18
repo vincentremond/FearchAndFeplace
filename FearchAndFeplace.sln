@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FearchAndFeplace", "FearchAndFeplace\FearchAndFeplace.fsproj", "{CD93BE33-DA0F-468B-AA24-7CAE41F0F9DE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{9D9382A0-8216-4F13-A3C9-3E4E423BF4FE}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		paket.dependencies = paket.dependencies
+		paket.lock = paket.lock
+		paket.references = paket.references
+	EndProjectSection
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FearchAndFeplace.Tests", "FearchAndFeplace.Tests\FearchAndFeplace.Tests.fsproj", "{B347A0C6-93A6-43F1-BE0C-40C8A7976805}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CD93BE33-DA0F-468B-AA24-7CAE41F0F9DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD93BE33-DA0F-468B-AA24-7CAE41F0F9DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD93BE33-DA0F-468B-AA24-7CAE41F0F9DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD93BE33-DA0F-468B-AA24-7CAE41F0F9DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B347A0C6-93A6-43F1-BE0C-40C8A7976805}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B347A0C6-93A6-43F1-BE0C-40C8A7976805}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B347A0C6-93A6-43F1-BE0C-40C8A7976805}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B347A0C6-93A6-43F1-BE0C-40C8A7976805}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

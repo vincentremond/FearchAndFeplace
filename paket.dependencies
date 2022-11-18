@@ -1,0 +1,7 @@
+source https://api.nuget.org/v3/index.json
+
+storage: none
+framework: auto-detect
+nuget CommandLineParser.FSharp
+nuget FsToolkit.ErrorHandling
+nuget UTF.Unknown 2.5.1
