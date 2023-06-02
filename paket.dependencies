@@ -3,5 +3,10 @@ source https://api.nuget.org/v3/index.json
 storage: none
 framework: auto-detect
 nuget CommandLineParser.FSharp
+nuget coverlet.collector
 nuget FsToolkit.ErrorHandling
-nuget UTF.Unknown 2.5.1
+nuget Microsoft.NET.Test.Sdk
+nuget NUnit
+nuget NUnit.Analyzers
+nuget NUnit3TestAdapter
+nuget UTF.Unknown

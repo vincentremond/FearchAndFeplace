@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{9D9382
 		.gitignore = .gitignore
 		paket.dependencies = paket.dependencies
 		paket.lock = paket.lock
-		paket.references = paket.references
+		Install-as-dotnet-tool.ps1 = Install-as-dotnet-tool.ps1
 	EndProjectSection
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "FearchAndFeplace.Tests", "FearchAndFeplace.Tests\FearchAndFeplace.Tests.fsproj", "{B347A0C6-93A6-43F1-BE0C-40C8A7976805}"
