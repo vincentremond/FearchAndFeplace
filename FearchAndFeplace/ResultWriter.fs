@@ -4,7 +4,7 @@ open FearchAndFeplace
 
 [<RequireQualifiedAccess>]
 module ResultWriter =
-    
+
     let rec writeContent content =
         for item in content do
             match item with

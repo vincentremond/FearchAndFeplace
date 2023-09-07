@@ -9,7 +9,7 @@
     <PackageOutputPath>./nupkg</PackageOutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="paket.references" />
+    <None Include="paket.references" />
     <Compile Include="CommandLine.fs" />
     <Compile Include="Path.fs" />
     <Compile Include="File.fs" />

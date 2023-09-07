@@ -8,7 +8,7 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="paket.references" />
+    <None Include="paket.references" />
     <Compile Include="UnitTest1.fs" />
   </ItemGroup>
   <ItemGroup>
