@@ -2,7 +2,6 @@ module FearchAndFeplace.Tests
 
 open FearchAndFeplace
 open NUnit.Framework
-open Program
 
 [<Test>]
 let Test1 () =

@@ -1,7 +1,6 @@
 ﻿namespace FearchAndFeplace
 
 open System.IO
-open System.Xml.Linq
 open FsToolkit.ErrorHandling
 open FearchAndFeplace
 open FearchAndFeplace.Path
@@ -11,20 +10,12 @@ module Fixer =
 
     let rec private scanFolder (folder: DirectoryInfo) =
         result {
-            let! files =
+            let files =
                 folder.GetFiles()
                 |> List.ofArray
-                |> List.map File.readAllText
-                |> List.sequenceResultA
-
-            let files =
-                files
-                |> List.map (fun (name, encoding, content) ->
-                    FileEntryItem.File {
-                        Name = name
-                        Encoding = encoding
-                        Contents = content
-                    }
+                |> List.map (
+                    File.readContents
+                    >> FileEntryItem.File
                 )
 
             let! directories =
@@ -48,13 +39,19 @@ module Fixer =
         }
 
     let rec doFixes targetDirectory fix entries =
+        let fixContents c =
+            match c with
+            | Empty -> Empty
+            | Text(text, encoding) -> Text((fix text), encoding)
+            | Binary bytes -> Binary bytes
+
         entries
         |> List.map (
             function
             | FileEntryItem.File file ->
                 FileEntryItem.File {
                     file with
-                        Contents = fix file.Contents
+                        Contents = fixContents file.Contents
                         Name =
                             (targetDirectory
                              </> (fix file.Name))
@@ -67,7 +64,7 @@ module Fixer =
                 FileEntryItem.Directory {
                     directory with
                         Name = dir
-                        Items = (doFixes dir fix (directory.Items))
+                        Items = (doFixes dir fix directory.Items)
                 }
         )
 
