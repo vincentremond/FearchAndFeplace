@@ -70,13 +70,13 @@ module Fixer =
 
     let fix args =
         result {
-            let fix = String.replace args.Pattern args.Replacement
+            let fix = String.replace args.SearchPattern.Value args.Replacement.Value
 
             let! scanResult =
-                args.SourceFolder
+                args.SourceDirectory.Value
                 |> DirectoryInfo
                 |> scanFolder
 
             let result = [ FileEntryItem.Directory scanResult ]
-            return doFixes args.TargetFolder fix result
+            return doFixes args.TargetDirectory.Value fix result
         }

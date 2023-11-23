@@ -2,9 +2,9 @@ STORAGE: NONE
 RESTRICTION: == net7.0
 NUGET
   remote: https://api.nuget.org/v3/index.json
-    CommandLineParser.FSharp (2.9.1)
-      FSharp.Core (>= 4.5.1)
     coverlet.collector (6.0)
+    Fargo.CmdLine (1.1.14)
+      FSharp.Core (>= 7.0.400)
     FSharp.Core (7.0.401)
     FsToolkit.ErrorHandling (4.10)
       FSharp.Core (>= 7.0.300)

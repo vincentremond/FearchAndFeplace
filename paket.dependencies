@@ -2,8 +2,8 @@ source https://api.nuget.org/v3/index.json
 
 storage: none
 framework: auto-detect
-nuget CommandLineParser.FSharp
 nuget coverlet.collector
+nuget Fargo.CmdLine
 nuget FsToolkit.ErrorHandling
 nuget Microsoft.NET.Test.Sdk
 nuget NUnit

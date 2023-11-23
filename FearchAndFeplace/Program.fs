@@ -1,21 +1,55 @@
-﻿open FsToolkit.ErrorHandling
+﻿open System.IO
+open System.Threading.Tasks
+open FearchAndFeplace
+open FsToolkit.ErrorHandling
+open Fargo
 
-module Program =
+let commandLineParser =
 
-    open FearchAndFeplace
+    fargo {
+        let! sourceDirectory =
+            (opt "source-directory" null "dir" "The directory to search for files to fix")
+            |> reqOpt
+            |> parse FolderPath.init
 
-    [<EntryPoint>]
-    let main argv =
-        result {
-            let args =
-                CommandLine.parse<Arguments> argv
-                |> Result.defaultWith (fun errs -> failwithf $"Error: %A{errs}")
+        and! targetDirectory =
+            opt "target-directory" null "dir" "The directory to write the fixed files to"
+            |> reqOpt
+            |> parse FolderPath.init
 
-            let! fixedContent = Fixer.fix args
-            ResultWriter.writeContent fixedContent
+        and! searchPattern =
+            opt "search-pattern" null "pattern" "The search pattern to use when searching for files to fix"
+            |> reqOpt
+            |> parse SearchPattern.init
+
+        and! replacement =
+            opt "replacement" null "replacement" "The replacement to use when fixing files"
+            |> reqOpt
+            |> parse Replacement.init
+
+        return {
+            SourceDirectory = sourceDirectory
+            TargetDirectory = targetDirectory
+            SearchPattern = searchPattern
+            Replacement = replacement
         }
-        |> function
-            | Ok _ -> 0
-            | Error err ->
-                printfn $"Error: %A{err}"
-                -1
+    }
+
+[<EntryPoint>]
+let main commandLineArguments =
+    run
+        "FearchAndFeplace"
+        commandLineParser
+        commandLineArguments
+        (fun _cancellationToken parsedArguments ->
+            let fixedContent = Fixer.fix parsedArguments
+
+            Task.FromResult
+            <| match fixedContent with
+               | Ok fixedContent ->
+                   ResultWriter.writeContent fixedContent
+                   0
+               | Error error ->
+                   printfn $"Error: %s{error}"
+                   -1
+        )

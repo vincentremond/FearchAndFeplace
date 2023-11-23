@@ -10,7 +10,6 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="paket.references" />
-    <Compile Include="CommandLine.fs" />
     <Compile Include="Path.fs" />
     <Compile Include="File.fs" />
     <Compile Include="String.fs" />
