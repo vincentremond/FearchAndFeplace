@@ -13,24 +13,16 @@ module Fixer =
             let files =
                 folder.GetFiles()
                 |> List.ofArray
-                |> List.map (
-                    File.readContents
-                    >> FileEntryItem.File
-                )
+                |> List.map (File.readContents >> FileEntryItem.File)
 
             let! directories =
                 folder.GetDirectories()
                 |> List.ofArray
-                |> List.filter (fun d ->
-                    d.Name <> "obj"
-                    && d.Name <> "bin"
-                )
+                |> List.filter (fun d -> d.Name <> "obj" && d.Name <> "bin")
                 |> List.map scanFolder
                 |> List.sequenceResultM
 
-            let directories =
-                directories
-                |> List.map Directory
+            let directories = directories |> List.map Directory
 
             return {
                 Name = folder.Name
@@ -52,14 +44,10 @@ module Fixer =
                 FileEntryItem.File {
                     file with
                         Contents = fixContents file.Contents
-                        Name =
-                            (targetDirectory
-                             </> (fix file.Name))
+                        Name = (targetDirectory </> (fix file.Name))
                 }
             | FileEntryItem.Directory directory ->
-                let dir =
-                    targetDirectory
-                    </> (directory.Name |> fix)
+                let dir = targetDirectory </> (directory.Name |> fix)
 
                 FileEntryItem.Directory {
                     directory with
@@ -72,10 +60,7 @@ module Fixer =
         result {
             let fix = String.replace args.SearchPattern.Value args.Replacement.Value
 
-            let! scanResult =
-                args.SourceDirectory.Value
-                |> DirectoryInfo
-                |> scanFolder
+            let! scanResult = args.SourceDirectory.Value |> DirectoryInfo |> scanFolder
 
             let result = [ FileEntryItem.Directory scanResult ]
             return doFixes args.TargetDirectory.Value fix result
