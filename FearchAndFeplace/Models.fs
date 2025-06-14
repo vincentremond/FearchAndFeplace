@@ -25,9 +25,7 @@ type NonEmptyString =
 type SearchPattern =
     | SearchPattern of NonEmptyString
 
-    static member init =
-        NonEmptyString.init
-        >> Result.map SearchPattern
+    static member init = NonEmptyString.init >> Result.map SearchPattern
 
     member this.Value =
         match this with
@@ -36,9 +34,7 @@ type SearchPattern =
 type Replacement =
     | Replacement of NonEmptyString
 
-    static member init =
-        NonEmptyString.init
-        >> Result.map Replacement
+    static member init = NonEmptyString.init >> Result.map Replacement
 
     member this.Value =
         match this with

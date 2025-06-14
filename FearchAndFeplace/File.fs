@@ -42,10 +42,7 @@ module File =
             }
         else
             let detectionResult =
-                CharsetDetector
-                    .DetectFromBytes(bytes)
-                    .Detected
-                |> Option.ofObj
+                CharsetDetector.DetectFromBytes(bytes).Detected |> Option.ofObj
 
             match detectionResult with
             | None -> {
@@ -54,9 +51,7 @@ module File =
               }
             | Some detectionResult ->
                 let encoding =
-                    detectionResult.Encoding
-                    |> Option.ofObj
-                    |> Option.defaultValue Encoding.ASCII
+                    detectionResult.Encoding |> Option.ofObj |> Option.defaultValue Encoding.ASCII
 
                 let memoryStream = new MemoryStream(bytes)
                 use stream = new StreamReader(memoryStream, encoding)
