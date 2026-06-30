@@ -17,7 +17,7 @@ NUGET
     coverlet.collector (10.0.1)
     Fargo.CmdLine (1.7.5)
       FSharp.Core (>= 8.0.100)
-    FSharp.Core (10.1.301)
+    FSharp.Core (11.0.100)
     FsToolkit.ErrorHandling (5.2)
       FSharp.Core (>= 9.0.300)
     Microsoft.ApplicationInsights (3.1.2)
