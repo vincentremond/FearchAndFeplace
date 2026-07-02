@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/.build/">
+    <File Path=".gitignore" />
+    <File Path="Install-as-dotnet-tool.ps1" />
+    <File Path="paket.dependencies" />
+    <File Path="paket.lock" />
+  </Folder>
+  <Project Path="FearchAndFeplace.Tests/FearchAndFeplace.Tests.fsproj" />
+  <Project Path="FearchAndFeplace/FearchAndFeplace.fsproj" />
+</Solution>
